@@ -24,6 +24,10 @@ export default function Questions() {
        return options
     }
 
+    const saveAnswerLabels = (event) => {
+        console.log(event.target.name)
+    }
+
     if (questions) {
         return(
             <div className='container'>
@@ -32,7 +36,10 @@ export default function Questions() {
                         questions.map((ques, idx) => (
                             <div key={idx}>
                                 <p>{ decode(ques.question) }</p>
-                                <ButtonGroup options = {combinedOptions(ques)} />
+                                <ButtonGroup 
+                                    options = {combinedOptions(ques)} 
+                                    handleClick={saveAnswerLabels}
+                                />
                                 <hr />
                             </div>
                             ))

@@ -44,6 +44,11 @@ body {
   width: auto;
   color: #4D5B9E;
   background-color: white;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #D6DBF5 ;
 }
 
 .check-button {
