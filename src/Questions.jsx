@@ -11,7 +11,7 @@ export default function Questions() {
         fetch("https://opentdb.com/api.php?amount=05&type=multiple")
         .then((res) => res.json())
         .then((data)=> setAllQuestions(data.results))
-    },[])
+    },[0])
 
     const combinedOptions = (ques) => {
         let options = []
@@ -24,8 +24,9 @@ export default function Questions() {
        return options
     }
 
-    const saveAnswerLabels = (event) => {
+    const saveAnswerLabels = (event, answer) => {
         console.log(event.target.name)
+        console.log(answer)
     }
 
     if (questions) {
@@ -36,9 +37,11 @@ export default function Questions() {
                         questions.map((ques, idx) => (
                             <div key={idx}>
                                 <p>{ decode(ques.question) }</p>
-                                <ButtonGroup 
+                                <ButtonGroup
+                                    key={idx}
                                     options = {combinedOptions(ques)} 
                                     handleClick={saveAnswerLabels}
+                                    answer={ques.correct_answer}
                                 />
                                 <hr />
                             </div>
