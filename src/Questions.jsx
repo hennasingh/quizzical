@@ -1,7 +1,5 @@
 import React from 'react';
 import { decode } from 'html-entities';
-import ButtonGroup from './ButtonGroup';
-
 
 export default function Questions() {
 
@@ -11,7 +9,7 @@ export default function Questions() {
         fetch("https://opentdb.com/api.php?amount=05&type=multiple")
         .then((res) => res.json())
         .then((data)=> setAllQuestions(data.results))
-    },[0])
+    },[])
 
     const combinedOptions = (ques) => {
         let options = []
@@ -19,14 +17,8 @@ export default function Questions() {
             options.push(ques.incorrect_answers[i])
         }
        const index =  Math.ceil(Math.random() * options.length)
-       options.splice(index, 0, ques.correct_answer);
-       console.log(options);
+       options.splice(index, 0, ques.correct_answer)
        return options
-    }
-
-    const saveAnswerLabels = (event, answer) => {
-        console.log(event.target.name)
-        console.log(answer)
     }
 
     if (questions) {
@@ -37,12 +29,18 @@ export default function Questions() {
                         questions.map((ques, idx) => (
                             <div key={idx}>
                                 <p>{ decode(ques.question) }</p>
-                                <ButtonGroup
-                                    key={idx}
-                                    options = {combinedOptions(ques)} 
-                                    handleClick={saveAnswerLabels}
-                                    answer={ques.correct_answer}
-                                />
+                                <div className="options">
+                                    <form>
+                                    {
+                                            combinedOptions(ques).map((label, id) => (    
+                                            <div key={id}>                       
+                                                <input type="radio" id={id} name={`question${idx}`}/>
+                                                <label className="radio-button" htmlFor={id}>{decode(label)}</label>
+                                            </div>
+                                        ))
+                                    }
+                                    </form>
+                                </div>
                                 <hr />
                             </div>
                             ))
