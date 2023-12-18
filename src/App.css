@@ -37,9 +37,6 @@ body {
 
 .options {
   padding: 0.4em;
-}
-
-form {
   display: flex;
   justify-content: center;
   align-items: center;

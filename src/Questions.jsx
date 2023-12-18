@@ -24,29 +24,31 @@ export default function Questions() {
     if (questions) {
         return(
             <div className='container'>
-                <div className='questions'>
-                    {
-                        questions.map((ques, idx) => (
-                            <div key={idx}>
-                                <p>{ decode(ques.question) }</p>
-                                <div className="options">
-                                    <form>
-                                    {
-                                            combinedOptions(ques).map((label, id) => (    
-                                            <div key={id}>                       
-                                                <input type="radio" id={id} name={`question${idx}`}/>
-                                                <label className="radio-button" htmlFor={id}>{decode(label)}</label>
-                                            </div>
-                                        ))
-                                    }
-                                    </form>
+                 <form>
+                    <div className='questions'>                  
+                        {
+                            questions.map((ques, idx) => (
+                                <div key={idx}>
+                                    <p>{ decode(ques.question) }</p>
+                                    <div className="options">
+                                    
+                                        {
+                                                combinedOptions(ques).map((label, id) => (    
+                                                <div key={id}>                       
+                                                    <input type="radio" id={`question_${idx}_option${id}`} name={`question${idx}`}/>
+                                                    <label className="radio-button" htmlFor={`question_${idx}_option${id}`}>{decode(label)}</label>
+                                                </div>
+                                            ))
+                                        }
+                                        
+                                    </div>
+                                    <hr />
                                 </div>
-                                <hr />
-                            </div>
-                            ))
-                    } 
-                </div>
-                <button className='check-button'>Check Answers</button>                
+                                ))
+                        }
+                    </div>
+                    <button className='check-button'>Check Answers</button>  
+                 </form>               
             </div>
         )
     }
