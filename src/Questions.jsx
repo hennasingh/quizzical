@@ -5,6 +5,9 @@ export default function Questions() {
 
     const[questions, setAllQuestions] = React.useState('')
     const [selectedAnswers, setSelectedAnswers] = React.useState({})
+    const [correctAnswers, setCorrectAnswers] = React.useState(0)
+    const [gameOver, setGameOver] = React.useState(false)
+    const [playAgain, setPlayAgain] = React.useState(false)
 
     React.useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=05&type=multiple")
@@ -12,7 +15,7 @@ export default function Questions() {
         .then((data)=> {
             setAllQuestions(combineQuestions(data.results))
             console.log(data.results)})
-    },[])
+    },[playAgain])
 
     function combineQuestions(questions) {
        const answers =  questions.map((ques, quesId) => {
@@ -26,7 +29,7 @@ export default function Questions() {
                 'id': quesId ,
                 'question': ques.question,
                 options,
-                'answers': {quesId, answerId}
+                'answerIndex': answerId
             }
         })
         console.log(answers)
@@ -35,8 +38,26 @@ export default function Questions() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(selectedAnswers)
 
+        for(let i = 0; i < questions.length; i++) {
+            const radiosName = document.getElementsByName('ques_' + i)
+
+            for(let j=0; j < radiosName.length; j++) {
+                const radiosValue = radiosName[j]
+                if(radiosValue.checked){
+                    if(radiosValue.value == questions[i].answerIndex) {
+                        setCorrectAnswers(prevAnswer => prevAnswer + 1)
+                        radiosValue.nextSibling.style.backgroundColor = "#94D7A2"
+                    } else {
+                        radiosValue.nextSibling.style.backgroundColor = "#F8BCBC"
+                        radiosValue.nextSibling.style.color="#293264"
+                    }
+                } else if(radiosValue.value == questions[i].answerIndex) {
+                    radiosValue.nextSibling.style.backgroundColor = "#94D7A2"
+                }
+            }
+        }
+        setGameOver(true)
     }
 
     function handleChange(quesId, optionId) {
@@ -46,6 +67,15 @@ export default function Questions() {
                 [quesId]: optionId
             }
         })
+    }
+
+    function resetGame() {
+        setGameOver(false)
+        setSelectedAnswers({})
+        setCorrectAnswers(0)
+        setPlayAgain(true)
+        setAllQuestions('')
+
     }
 
     if (questions) {
@@ -86,8 +116,15 @@ export default function Questions() {
                                 ))
                         }
                     </div>
-                    <button className='check-button'>Check Answers</button>  
-                 </form>               
+                   { !gameOver && <button className='control-button'>Check Answers</button>  }
+                 </form>
+                 {gameOver && 
+                    <div className="play-again">
+                        <p className="correct-answers">You scored {correctAnswers}/{questions.length} correctAnswers</p>
+                        <button className='control-button play' onClick={resetGame}>Play again</button>  
+                     </div>
+                 }
+
             </div>
         )
     }
