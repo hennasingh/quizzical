@@ -14,7 +14,7 @@ export default function Questions() {
         .then((res) => res.json())
         .then((data)=> {
             setAllQuestions(combineQuestions(data.results))
-            console.log(data.results)})
+        })
     },[playAgain])
 
     function combineQuestions(questions) {

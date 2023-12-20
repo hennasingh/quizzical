@@ -85,3 +85,11 @@ form input[type="radio"]:checked+label {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+@media(max-width: 700px) {
+
+  .options {
+    padding: 0.4em;
+    display: block;
+  }
+}
