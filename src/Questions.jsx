@@ -5,7 +5,7 @@ import blueIcon from './blobQB.png'
 
 export default function Questions() {
 
-    const[questions, setAllQuestions] = React.useState([])
+    const[allQuestions, setAllQuestions] = React.useState([])
     const [selectedAnswers, setSelectedAnswers] = React.useState({})
     const [correctAnswers, setCorrectAnswers] = React.useState(0)
     const [gameOver, setGameOver] = React.useState(false)
@@ -19,8 +19,8 @@ export default function Questions() {
         })
     },[playAgain])
 
-    function combineQuestions(questions) {
-       const answers =  questions.map((ques, quesId) => {
+    function combineQuestions(fetchedQuestions) {
+       const answers =  fetchedQuestions.map((ques, quesId) => {
             let options = []
             for(let i = 0; i < ques.incorrect_answers.length; i++){
                 options.push(ques.incorrect_answers[i])
@@ -34,14 +34,13 @@ export default function Questions() {
                 'answerIndex': answerId
             }
         })
-        console.log(answers)
         return answers
     }
 
     function handleSubmit(event) {
         event.preventDefault()
 
-        questions.forEach((ques, index) => {
+        allQuestions.forEach((ques, index) => {
             const radiosName = document.getElementsByName('ques_' + index)
         
             radiosName.forEach((radiosValue) => {
@@ -81,18 +80,18 @@ export default function Questions() {
         setSelectedAnswers({})
         setCorrectAnswers(0)
         setPlayAgain(true)
-        setAllQuestions('')
+        setAllQuestions([])
 
     }
 
-    if (questions) {
+    if (allQuestions) {
         return(
             <div className='container'>
                 <img src={yellowIcon} className='yellow-blob yellow'/>
                  <form onSubmit={handleSubmit}>
                     <div className='questions'>                  
                         {
-                            questions.map((ques, quesId) => (
+                            allQuestions.map((ques, quesId) => (
                                 <div key={quesId}>
                                     <p>{ decode(ques.question) }</p>
                                     <div className="options">
@@ -128,7 +127,7 @@ export default function Questions() {
                  </form>
                  {gameOver && 
                     <div className="play-again">
-                        <p className="correct-answers">You scored {correctAnswers}/{questions.length} correctAnswers</p>
+                        <p className="correct-answers">You scored {correctAnswers}/{allQuestions.length} correctAnswers</p>
                         <button className='control-button play' onClick={resetGame}>Play again</button>  
                      </div>
                  }

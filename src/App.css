@@ -9,7 +9,7 @@ body {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2em;
   text-align: center;
 }
 
@@ -24,20 +24,23 @@ body {
   bottom:0;
   left:0;
 }
+/**
+* Start Quiz UI Styles
+*/
+
 .quiz-title {
-  font-size: 3.2em;
+  font-size: 3.2rem;
   line-height: 1.1;
   color:#293264 ;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .start-quiz {
-  border-radius: 10px;
-  margin-top: 30px;
+  border-radius: 0.8em;
+  margin-top: 2em;
   border:none;
-  height:50px;
+  height:3.2em;
   width:150px;
-  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   color: #F5F7FB;
@@ -46,8 +49,13 @@ body {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+/**
+* Questions UI Style
+*/
+
 .options {
   padding: 0.4em;
+  gap: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +70,7 @@ input[type="radio"] {
   padding: 0.4em 1.2em;
   margin:0.4em 0;
   border: 1px solid #4D5B9E;
-  border-radius: 10px;
+  border-radius: 0.8em;
   color: #293264;
   cursor: pointer;
 }
@@ -74,21 +82,23 @@ form input[type="radio"]:checked+label {
 
 .control-button {
   width: 150px;
-  height: 50px;
-  border-radius: 10px;
+  height: 3.2em;
+  border-radius: 0.8em;
   border: 1px solid;
   background-color:#4D5B9E ;
   color:white;
-  margin-top: 50px;
+  margin-top: 3.2em;
 }
 
 hr {
   border: none;
   border-top: 1px solid #DBDEF0;
 }
+
 .play {
   margin-top: 1em;
 }
+
 .play-again {
   display: flex;
   justify-content: center;
