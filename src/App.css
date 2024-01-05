@@ -69,6 +69,7 @@ input[type="radio"] {
 
 form input[type="radio"]:checked+label {
   background: #D6DBF5;
+  border: none;
 }
 
 .control-button {
@@ -81,6 +82,10 @@ form input[type="radio"]:checked+label {
   margin-top: 50px;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid #DBDEF0;
+}
 .play {
   margin-top: 1em;
 }
@@ -103,7 +108,7 @@ form input[type="radio"]:checked+label {
     padding: 0.4em;
     display: block;
   }
-  .yellow-blob, .blue-blob {
+  .yellow, .blue {
     display: none;
   }
 }

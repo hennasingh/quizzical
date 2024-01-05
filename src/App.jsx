@@ -16,12 +16,12 @@ function App() {
 
     return (
       <>
-        <img src={yellowIcon} class='yellow-blob'/>
+        <img src={yellowIcon} className='yellow-blob'/>
         <h1 className='quiz-title'>Quizzical</h1>
         <p>A fun quiz from multiple categories. 
         <br/>Let's see how much time you take to solve.</p>
         <button className='start-quiz' onClick={handleClick}>Start Quiz</button>
-        <img src={blueIcon} class='blue-blob'/>
+        <img src={blueIcon} className='blue-blob'/>
       </>
     )
   }

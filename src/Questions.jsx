@@ -5,7 +5,7 @@ import blueIcon from './blobQB.png'
 
 export default function Questions() {
 
-    const[questions, setAllQuestions] = React.useState('')
+    const[questions, setAllQuestions] = React.useState([])
     const [selectedAnswers, setSelectedAnswers] = React.useState({})
     const [correctAnswers, setCorrectAnswers] = React.useState(0)
     const [gameOver, setGameOver] = React.useState(false)
@@ -41,24 +41,29 @@ export default function Questions() {
     function handleSubmit(event) {
         event.preventDefault()
 
-        for(let i = 0; i < questions.length; i++) {
-            const radiosName = document.getElementsByName('ques_' + i)
-
-            for(let j=0; j < radiosName.length; j++) {
-                const radiosValue = radiosName[j]
+        questions.forEach((ques, index) => {
+            const radiosName = document.getElementsByName('ques_' + index)
+        
+            radiosName.forEach((radiosValue) => {
                 if(radiosValue.checked){
-                    if(radiosValue.value == questions[i].answerIndex) {
+                    if(radiosValue.value == ques.answerIndex) {
                         setCorrectAnswers(prevAnswer => prevAnswer + 1)
                         radiosValue.nextSibling.style.backgroundColor = "#94D7A2"
+                        radiosValue.nextSibling.style.border = "none"
                     } else {
                         radiosValue.nextSibling.style.backgroundColor = "#F8BCBC"
                         radiosValue.nextSibling.style.color="#293264"
+                        radiosValue.nextSibling.style.border = "none"
+                        radiosValue.nextSibling.style.opacity = "0.7"
                     }
-                } else if(radiosValue.value == questions[i].answerIndex) {
+                } else if(radiosValue.value == ques.answerIndex) {
                     radiosValue.nextSibling.style.backgroundColor = "#94D7A2"
+                    radiosValue.nextSibling.style.border = "none"
+                } else {
+                    radiosValue.nextSibling.style.opacity = "0.7"
                 }
-            }
-        }
+            })
+        })
         setGameOver(true)
     }
 
@@ -83,7 +88,7 @@ export default function Questions() {
     if (questions) {
         return(
             <div className='container'>
-                <img src={yellowIcon} class='yellow-blob'/>
+                <img src={yellowIcon} className='yellow-blob yellow'/>
                  <form onSubmit={handleSubmit}>
                     <div className='questions'>                  
                         {
@@ -127,7 +132,7 @@ export default function Questions() {
                         <button className='control-button play' onClick={resetGame}>Play again</button>  
                      </div>
                  }
-                 <img src={blueIcon} class='blue-blob'/>
+                 <img src={blueIcon} className='blue-blob blue'/>
 
             </div>
         )
