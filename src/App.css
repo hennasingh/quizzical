@@ -1,10 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -13,6 +6,24 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.yellow-blob{
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+.blue-blob {
+  position: absolute;
+  bottom:0;
+  left:0;
+}
 .quiz-title {
   font-size: 3.2em;
   line-height: 1.1;
@@ -86,10 +97,13 @@ form input[type="radio"]:checked+label {
   font-size: 1.2rem;
 }
 
-@media(max-width: 700px) {
+@media(max-width: 800px) {
 
   .options {
     padding: 0.4em;
     display: block;
+  }
+  .yellow-blob, .blue-blob {
+    display: none;
   }
 }

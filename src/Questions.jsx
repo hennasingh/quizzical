@@ -1,5 +1,7 @@
 import React from 'react';
 import { decode } from 'html-entities';
+import yellowIcon from './blobQY.png'
+import blueIcon from './blobQB.png'
 
 export default function Questions() {
 
@@ -81,6 +83,7 @@ export default function Questions() {
     if (questions) {
         return(
             <div className='container'>
+                <img src={yellowIcon} class='yellow-blob'/>
                  <form onSubmit={handleSubmit}>
                     <div className='questions'>                  
                         {
@@ -124,6 +127,7 @@ export default function Questions() {
                         <button className='control-button play' onClick={resetGame}>Play again</button>  
                      </div>
                  }
+                 <img src={blueIcon} class='blue-blob'/>
 
             </div>
         )
