@@ -4,7 +4,7 @@ This is a mini-quiz app built using React Hooks.
 
 ### Overview
 
-This project was built while learning React Basics (Hooks, JSX, Function Components) in Scrimba's Frontned Career Path course. The project uses Open Trivia database API to pull 5 random questions. The App uses State hook to 
+This project was built while learning React Basics (Hooks, JSX, Function Components) in Scrimba's Frontend Career Path course. The project uses Open Trivia database API to pull 5 random questions. The App uses State hook to 
 manage screen changes instead of routes. The Figma mockup was provided by Scrimba and the app was built entirely from scratch by me.
 
 ### Solo Project Challenge
