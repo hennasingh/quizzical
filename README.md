@@ -19,9 +19,9 @@ manage screen changes instead of routes. The Figma mockup was provided by Scrimb
 
   ### App Screenshots
 
-  <img width="613" alt="image" src="https://github.com/hennasingh/quizzical/assets/22836317/21ecf91f-4f3c-402b-a75a-a0519749f11a">
+  <img width="500" alt="quiz start screen" src="https://github.com/hennasingh/quizzical/assets/22836317/21ecf91f-4f3c-402b-a75a-a0519749f11a">
 
-  <img width="829" alt="image" src="https://github.com/hennasingh/quizzical/assets/22836317/3f23c70e-fa39-40d9-ac39-b34bb2e2b185">
+  <img width="700" alt="multiple choice quiz questions" src="https://github.com/hennasingh/quizzical/assets/22836317/3f23c70e-fa39-40d9-ac39-b34bb2e2b185">
 
 
 #### Live Link: https://quizz-with-react.netlify.app/
